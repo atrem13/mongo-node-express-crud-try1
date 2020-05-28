@@ -98,7 +98,7 @@ exports.update = (req, res) => {
   }
 
   let id = req.params.tutorialId;
-  Tutorial.findByIdAndUpdate(id, req.body, {useFindAndModify: false}).then((data) => {
+  Tutorial.findByIdAndUpdate(id, req.body, {new: true}).then((data) => {
     if(!data){
       return res.status(400).json({
         status: 'error',
@@ -107,7 +107,7 @@ exports.update = (req, res) => {
     }else{
       return res.json({
         status: 'ok',
-        // data:data,
+        data:data,
         message: 'update data success'
       });
     }
